@@ -1,0 +1,35 @@
+import xlsxwriter
+workbook=xlsxwriter.Workbook('ques2.xlsx')
+worksheet=workbook.add_worksheet()
+format = workbook.add_format()
+format.set_bold()
+worksheet.write('A1','First Name ',format)
+worksheet.write('B1','Last Name ',format)
+worksheet.write('C1','Date of birth ',format)
+worksheet.write('D1','City ',format)
+max1=len('First Name ')
+max2=len('Last Name ')
+max3=len('Date of birth')
+max4=len('City ')
+for i in range(2,11):
+    str1=raw_input("enter the First Name ")
+    worksheet.write("A"+str(i),str1)
+    if max1<len(str1):
+        max1=len(str1)
+    str2=raw_input("enter the Last Name ")
+    worksheet.write("B"+str(i),str2)
+    if max2<len(str2):
+        max2=len(str2)
+    str3=raw_input("enter the Date of birth ")
+    worksheet.write("C"+str(i),"     "+str3)
+    if max3<len(str3):
+        max3=len(str3)
+    str4=raw_input("enter the City ")
+    worksheet.write("D"+str(i),str4)
+    if max4<len(str4):
+        max4=len(str4)
+worksheet.set_column(0,0,width=max1)
+worksheet.set_column(1,1,width=max2)
+worksheet.set_column(2,2,width=max3-1)
+worksheet.set_column(3,3,width=max4)
+workbook.close()
